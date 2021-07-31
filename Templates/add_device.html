@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Add Device</title>
+	</head>
+
+	<h3>
+		{% if message %}
+			<p>{{ message }}</p>
+		{% endif %}
+	</h3>
+
+<body>
+	<form method="POST" action="/Submit/Device/{{data[2]}}">		
+		SKU ID name: <input type="text" name="sku_id"><br>
+		Switch Type: <select name= switch_type method="POST" action="/">
+		{% for id in data[0] %}
+			<option value= "{{id}}" SELECTED>{{id}}</option>
+		{% endfor %}</select><br>
+		Module name: <input type="text" name="module_name"><br>		
+		No of Switch(es): <select name= no_of_switches method="POST" action="/">
+		{% for id in data[1] %}
+			<option value= "{{id}}" SELECTED>{{id}}</option>
+		{% endfor %}</select><br>
+		<input type="submit" value="Submit">
+	</form>
+<a href=/Device><input type="submit" value="Back to Device list"></a>
+</body>
+</html>
+
+
+
+
+
+
+
+
