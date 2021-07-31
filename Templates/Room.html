@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+</style>
+
+</head>
+    <body>
+    <a href=/Room/Create><input type="button" value="Create Room"></a>
+    <table>
+	<tr>
+		<th>User ID</th>
+		<th>Room Name</th>
+		<th>Action</th>
+	</tr>
+    <div>
+	{% for i in range(data|length) %}
+	        <form action="/Room/edit/{{ data[i][0] }}" method="POST">
+			    <tr>
+            <th><input type="text" name="emailID[{{i}}]" value="{{data[i][1]}}" readonly></th>
+        		<th><input type="text" name="room_name[{{i}}]" value="{{ data[i][2] }}" readonly></th>
+			<th><a href=/Room/edit/{{ data[i][0] }}><input type="submit" name="submit[{{i}}]" value="Edit Room" ></th>		</form>
+
+ 	{% endfor %}</tr>
+
+    </div>   
+    </table>
+    </body>
+</html>

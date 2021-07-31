@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Add switches</title>
+
+		<style>
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  padding: 5px;
+		}
+		th {
+		  text-align: left;
+		}
+		</style>
+	</head>
+
+	<h3>
+		{% if message %}
+			<p>{{ message }}</p>
+		{% endif %}
+	</h3>
+
+	<body>
+
+
+				<form method="POST" action="/Submit/Switch/{{data[0][5]}}">
+		<table>
+			<tr>
+				<th>Username: <input = "text" name= user_name value="{{user_data}}" readonly> </th>
+				<th>Room name: <input = "text" name= emailID value="{{data[0][1]}}" readonly></th>
+				<th>Module Name: <input = "text" name= mod_name value="{{data[0][3]}}" readonly></th>
+				<th>No. of Switch: <input = "text" name= no_of_switch value="{{data[0][4]}}" readonly></th>
+		</table>
+	<p></p>
+			<table>
+				<tr>
+					<th>GPIO Sequence</th>
+					<th>Switch Name</th>
+					<th>Switch Type</th>
+					<th>Is dimmable</th>
+				</tr>
+
+				{% for i in range(data[0][4]|int) %}
+					<tr>
+						<th><input type="text" name="seq_name[{{i}}]"></th>
+						<th><input type="text" name="switch_name[{{i}}]"></th>
+						<th>{{ data[0][2] }}</th>
+						<th><input type="checkbox" name="isEnabled[{{i}}]" value=1 ></th>
+					</tr>
+				{% endfor %}
+			</table>
+		<input type="submit" value="Submit">
+
+		</form>
+	<a href=/Device><input type="submit" value="Back to Device list"></a>
+	</body>
+</html>

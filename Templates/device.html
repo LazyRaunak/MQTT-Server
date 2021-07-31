@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Room</title>
+
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+</style>
+
+</head>
+
+<h3>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</h3>
+
+    <body>
+    <a href=/Device/Create><input type="button" value="Create Device"></a>
+    <table>
+	<tr>
+		<th>SKU ID</th>
+		<th>Module Name</th>
+		<th>Room Name</th>
+		<th>Switch Type</th>
+		<th>No. of switches</th>
+		<th>Add Switches </th>
+		<th>Action </th>
+	</tr>
+
+	{% for i in range(data|length) %}
+    	<form action="/Switches/{{data[i][0]}}" method="POST">
+	        <tr><th><input type="text" name="sku_id[{{i}}]" value="{{data[i][1]}}" readonly></th>
+        	<th><input type="text" name="module_name[{{i}}]" value="{{data[i][2]}}" readonly></th>
+        	<th><input type="text" name="room_name[{{i}}]" value="{{data[i][3]}}" readonly></th>		
+        	<th><input type="text" name="switch_type[{{i}}]" value="{{data[i][4]}}" readonly></th>
+        	<th><input type="text" name="switch_count[{{i}}]" value="{{data[i][5]}}" readonly></th>
+   		<th><a href=/Switches/{{data[i][0]}}><input type="submit" name="submit[{{i}}]" value="Add Switches" method="POST"></th>    	
+    	</form>   
+	<form action="/Device/Edit/{{data[0]}}" method="POST">
+		<th><a href=/Device/Edit/{{data[i][0]}}><input type="Button" value="Edit Device"></th>
+	</form>
+ 	{% endfor %}</tr>
+    </table>
+    </body>
+</html>
+
+
+
+
+
+
+

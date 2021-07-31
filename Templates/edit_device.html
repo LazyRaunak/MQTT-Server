@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Dropdown</title>
+
+		<style>
+		table, th, td {
+		  border: 1px solid black;
+		  border-collapse: collapse;
+		}
+		th, td {
+		  padding: 5px;
+		}
+		th {
+		  text-align: left;
+		}
+		</style>
+	</head>
+
+	<h3>
+		{% if message %}
+			<p>{{ message }}</p>
+		{% endif %}
+	</h3>
+
+	<body>
+		<table>
+			<tr>
+			<th>Username: <input = "text" name= user_name value="{{data[0][0][0]}}" readonly></th>
+			<th>Room name:<input = "text" name= room_name value="{{data[1][0][1]}}" readonly> </th>
+			<th>Module name:<input = "text" name= module_name value="{{data[1][0][3]}}" readonly> </th>
+		</table>
+	<form method="POST" action="/Submit/Device/Edit/{{url_data}}">
+		New Module name: <input type="text" name="new_module_name" required><br>
+	
+	<p></p>
+		<table>
+			<tr>
+				<th>GPIO Sequence</th>
+				<th>Switch Name</th>
+				<th>Switch Type</th>
+				<th>Is dimmable</th>
+			</tr>
+		<div>
+		{% for i in range(data[1][0][4]|int) %}
+				<tr>
+						<th><input type="text" name="seq_name[{{i}}]" required></th>
+						<th><input type="text" name="switch_name[{{i}}]" required></th>
+						<th>{{data[1][0][2]}}</th>
+						<th><input type="checkbox" name="isEnabled[{{i}}]" value=1></th>
+					</tr>
+			{% endfor %}
+		</table>
+		<input type="submit" value="Submit">
+
+	</form>
+<a href=/Device><input type="submit" value="Back to Device list"></a>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Edit Room</title>
+	</head>
+
+	<h3>
+	    {% if message %}
+	        <p>{{ message }}</p>
+	    {% endif %}
+	</h3>
+
+	<body>
+		<form  method="POST" action="/Submit/Edit/Room">
+		<table>	
+
+			<tr>
+				<th>User name: <input type="text" name="emailID[0]" value="{{data[0][0]}}" readonly></th>
+			</tr>
+			<tr>
+				<th> Room name: <input type="text" name="room_name[0]" value="{{data[0][1]}}" readonly></th>
+			</tr>
+		</table>
+
+				New Room name: <input type="text" name="new_name" required><br>
+			<input type="submit" value="Submit" action="/Room" >
+
+			</form>
+		<a href=/Room><input type="submit" value="Back to Room list"></a>
+	</body>
+</html>

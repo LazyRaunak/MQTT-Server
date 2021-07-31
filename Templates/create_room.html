@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dropdown</title>
+</head>
+
+<h3>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</h3>
+
+<body>
+
+<form method="POST" action="">
+User name: <select name= emailID method="GET" action="/">
+	{% for id in emailID %}
+	    <option value= "{{id}}" SELECTED>{{id}}</option>"
+    	{% endfor %}
+</select>
+</select><br>
+
+Room name: <input type="text" name="roomName" required><br>
+
+<input type="submit" value="Submit">
+
+</form>
+<a href=/Room><input type="submit" value="Back to Room list"></a>
+</body>
+</html>
+
+
+
+
+
+
+
+
