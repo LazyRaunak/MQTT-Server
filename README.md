@@ -1,2 +1,2 @@
 # MQTT-Server
-Check the documenttion for further detaols and working
+Check the documention for further detaols and working
